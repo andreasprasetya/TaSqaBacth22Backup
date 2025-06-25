@@ -47,22 +47,4 @@ public class AbsenPage {
         getTotalButtons()).contains(6);
   }
 
-  public boolean checkProperty() {
-    boolean state = true;
-    int size = getTotalButtons();
-
-    for (int i = 0; i < size; i++) {
-
-      WebElement name = inventoryItemName.get(i);
-      WebElement price = inventoryItemPrice.get(i);
-      WebElement button = buttonAddToCart.get(i);
-
-      if (!name.isDisplayed() || !price.isDisplayed() || !button.isDisplayed()) {
-        state = false;
-        break;
-      }
-    }
-
-    return state;
-  }
 }
