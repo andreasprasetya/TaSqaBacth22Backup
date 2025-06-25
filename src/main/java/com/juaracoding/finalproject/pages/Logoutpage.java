@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 public class Logoutpage {
     WebDriver driver;
 
-    @FindBy(id = "user-name")
+    @FindBy(id = "email")
     WebElement usernameField;
 
     @FindBy(id = "password")
@@ -37,8 +37,8 @@ public class Logoutpage {
         loginButton.click();
     }
 
-    public void login(String username, String password) {
-        setUsername(username);
+    public void login(String email, String password) {
+        setUsername(email);
         setPassword(password);
         onClick();
     }
