@@ -11,7 +11,7 @@ public class AbsenPage {
   WebDriver driver;
 
 
-  @FindBy(xpath = "//div[contains(@class,'camera')")
+  @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[1]/div[2]/div[1]/button[1]")
     WebElement  camera;
 
   @FindBy(xpath = "//div[contains(text(),'Jam Absen')]/following-sibling::div")
@@ -23,7 +23,7 @@ public class AbsenPage {
   @FindBy(xpath = "//textarea[@placeholder='Note'] ")//input[@name='note'] (tergantung tag-nya)
      WebElement noteTextField;
 
-  @FindBy(xpath = "//button[contains(text(),'Absen Masuk')]")
+  @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[1]/div[2]/div[1]/button[1]")
      WebElement buttonAbsen;
 
   public AbsenPage(WebDriver driver) {
@@ -31,17 +31,16 @@ public class AbsenPage {
     PageFactory.initElements(driver, this);
   }
 
-  public int getTotalNames() {
-      String value = timePicker.getAttribute("value");
-      assert value != null;
-      return value.length();
-  }
+//  public int getTotalNames() {
+//      String value = timePicker.getAttribute("value");
+//      assert value != null;
+//      return value.length();
+//  }
 //   Select select = new Select(dropDown); // dropDown bertipe WebElement
 //   public int getTipe() {
 //      return select.getOptions().size(); // jumlah item di dropdown
 //  }
         public void setNote(String value) {
-
             noteTextField.sendKeys(value);  // Mengisi catatan baru
         }
 
