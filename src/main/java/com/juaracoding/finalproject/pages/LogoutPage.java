@@ -14,11 +14,11 @@ public class LogoutPage {
     @FindBy(xpath = "//div[contains(@class,'sidebar') or contains(@class,'drawer')]//div[contains(text(),'Menu')]")
     WebElement sideBar;
 
-    @FindBy(xpath = "//button[contains(text(),'Logout')]")
+    @FindBy(xpath = "//*[@id='__next']/div/div/div/form/button[2]")
     WebElement logoutButton;
 
-    @FindBy(xpath = "//div[contains(@class,'Toastify')]")
-    WebElement errorMessage;
+//    @FindBy(xpath = "//div[contains(@class,'Toastify')]")
+//    WebElement errorMessage;
 
     public LogoutPage(WebDriver driver) {
         this.driver = driver;
@@ -35,10 +35,10 @@ public class LogoutPage {
     }
 
 
-
-    public String getErrorMessage() {
-        return errorMessage.getText();
-    }
+//
+//    public String getErrorMessage() {
+//        return errorMessage.getText();
+//    }
 
 }
 

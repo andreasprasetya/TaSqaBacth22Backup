@@ -1,14 +1,11 @@
 package com.juaracoding.finalproject.steps;
 
+import io.cucumber.java.en.Then;
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
-
 import com.juaracoding.finalproject.DriverSingleton;
 import com.juaracoding.finalproject.pages.SignInPage;
-
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class AuthenticationInvalidSignInTestStep {
@@ -36,7 +33,9 @@ public class AuthenticationInvalidSignInTestStep {
     signInPage.onClick();
   }
 
-//  @Then("Pengguna akan melihat pesan error")
+
+
+//  @Then("Pengguna berhasil masuk ke halaman absen")
 //  public void testStep04() {
 //    String expected = "https://magang.dikahadir.com/absen/login";
 //    String actual = signInPage.getErrorMessage();

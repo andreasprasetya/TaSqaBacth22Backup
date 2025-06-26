@@ -6,25 +6,25 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-/**
- * Daftar produk muncul lengkap dengan nama, harga, dan tombol Add to Cart
- */
+
 public class AbsenPage {
   WebDriver driver;
-    @FindBy(xpath = "//div[contains(@class,'camera')")
+
+
+  @FindBy(xpath = "//div[contains(@class,'camera')")
     WebElement  camera;
 
   @FindBy(xpath = "//div[contains(text(),'Jam Absen')]/following-sibling::div")
- WebElement  timePicker;
+    WebElement  timePicker;
 
   @FindBy(xpath = "//div[contains(text(),'Tipe Absen')]/following-sibling::div")
- WebElement dropDown;
+    WebElement dropDown;
 
-  @FindBy(xpath = "\t//textarea[@placeholder='Note'] atau //input[@name='note'] (tergantung tag-nya)")
- WebElement noteTextField;
+  @FindBy(xpath = "//textarea[@placeholder='Note'] ")//input[@name='note'] (tergantung tag-nya)
+     WebElement noteTextField;
 
-  @FindBy(xpath = "\t//button[contains(text(),'Absen Masuk')]")
-  WebElement buttonAbsen;
+  @FindBy(xpath = "//button[contains(text(),'Absen Masuk')]")
+     WebElement buttonAbsen;
 
   public AbsenPage(WebDriver driver) {
     this.driver = driver;
@@ -33,14 +33,15 @@ public class AbsenPage {
 
   public int getTotalNames() {
       String value = timePicker.getAttribute("value");
+      assert value != null;
       return value.length();
   }
-    Select select = new Select(dropDown); // dropDown bertipe WebElement
-    public int getTipe() {
-        return select.getOptions().size(); // jumlah item di dropdown
-    }
+//    Select select = new Select(dropDown); // dropDown bertipe WebElement
+//    public int getTipe() {
+////        return select.getOptions().size(); // jumlah item di dropdown
+//    }
         public void setNote(String value) {
-            noteTextField.clear();           // Menghapus teks lama (jika ada)
+
             noteTextField.sendKeys(value);  // Mengisi catatan baru
         }
 

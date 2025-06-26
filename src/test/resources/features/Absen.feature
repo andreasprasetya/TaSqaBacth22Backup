@@ -5,7 +5,7 @@ Feature: Fitur Absen Masuk
     And Pengguna Harus mengclik button absen
     And Pengguna mengambil foto selfie dengan wajah terlihat
     Then Muncul Form Absen
-    Then Pengguna memilih jam masuk
+    Then  Jam masuk otomatis muncul
     When Pengguna memilih opsi "WFO"
     And Pengguna menambahkan catatan "Bekerja dari kantor"
     When Pengguna memilih opsi "WFH"

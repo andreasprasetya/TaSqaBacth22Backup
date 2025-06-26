@@ -15,10 +15,13 @@ public class SignInPage {
   @FindBy(xpath = "//*[@id='password']")
   WebElement passwordField;
 
-  @FindBy(xpath = "//*[@id=\"__next\"]/div/div/div[2]/div/button")
+  @FindBy(xpath = "//button[@type='submit']")
   WebElement loginButton;
-    @FindBy(xpath = "//div[contains(@class,'Toastify')]")
-    WebElement errorMessage;
+
+
+
+//    @FindBy(xpath = "//div[contains(@class,'Toastify')]")
+//    WebElement errorMessage;
 
 
   public SignInPage(WebDriver driver) {
@@ -48,9 +51,9 @@ public class SignInPage {
     onClick();
   }
 
-    public String getErrorMessage() {
-        return errorMessage.getText();
-    }
+//    public String getErrorMessage() {
+//        return errorMessage.getText();
+//    }
 
   }
 
