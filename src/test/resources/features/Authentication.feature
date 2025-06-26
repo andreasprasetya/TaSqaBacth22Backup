@@ -1,5 +1,6 @@
 Feature: Authentication feature test
 
+
   @PriorityTinggi
   Scenario Outline: Login dengan kredensial yang valid
     Given Buka halaman login untuk pengujian login valid
@@ -22,8 +23,7 @@ Feature: Authentication feature test
       | emailtidakada@gmail.com | SQA@Hadir12345 |
       | hadirsqa1gmail.com  | SQA@Hadir12345 |
       | hadirsqa1@gmail.com | SQA@Hadir123456789|
-      | hadirsqa1@gmail.com | "" |
-      |""| SQA@Hadir12345|
-      |""| "" |
-
+      | hadirsqa1@gmail.com |  |
+      |   | SQA@Hadir12345|
+      | | |
 

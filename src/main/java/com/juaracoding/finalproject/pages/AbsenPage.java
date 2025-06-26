@@ -1,27 +1,30 @@
 package com.juaracoding.finalproject.pages;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 /**
  * Daftar produk muncul lengkap dengan nama, harga, dan tombol Add to Cart
  */
 public class AbsenPage {
   WebDriver driver;
+    @FindBy(xpath = "//div[contains(@class,'camera')")
+    WebElement  camera;
 
-  @FindBy(xpath = "//div[@class='inventory_item_name']")
-  List<WebElement> inventoryItemName;
+  @FindBy(xpath = "//div[contains(text(),'Jam Absen')]/following-sibling::div")
+ WebElement  timePicker;
 
-  @FindBy(xpath = "//div[@class='inventory_item_price']")
-  List<WebElement> inventoryItemPrice;
+  @FindBy(xpath = "//div[contains(text(),'Tipe Absen')]/following-sibling::div")
+ WebElement dropDown;
 
-  @FindBy(xpath = "//div[@class='btn_primary btn_inventory']")
-  List<WebElement> buttonAddToCart;
+  @FindBy(xpath = "\t//textarea[@placeholder='Note'] atau //input[@name='note'] (tergantung tag-nya)")
+ WebElement noteTextField;
+
+  @FindBy(xpath = "\t//button[contains(text(),'Absen Masuk')]")
+  WebElement buttonAbsen;
 
   public AbsenPage(WebDriver driver) {
     this.driver = driver;
@@ -29,22 +32,29 @@ public class AbsenPage {
   }
 
   public int getTotalNames() {
-    return inventoryItemName.size();
+      String value = timePicker.getAttribute("value");
+      return value.length();
+  }
+    Select select = new Select(dropDown); // dropDown bertipe WebElement
+    public int getTipe() {
+        return select.getOptions().size(); // jumlah item di dropdown
+    }
+        public void setNote(String value) {
+            noteTextField.clear();           // Menghapus teks lama (jika ada)
+            noteTextField.sendKeys(value);  // Mengisi catatan baru
+        }
+
+  public void onClick() {
+    buttonAbsen.click();
   }
 
-  public int getTotalPrices() {
-    return inventoryItemPrice.size();
-  }
 
-  public int getTotalButtons() {
-    return buttonAddToCart.size();
-  }
+//
+//  public void login(String email, String password) {
+//    setUsername(email);
+//    setPassword(password);
+//    onClick();
+//  }
 
-  public boolean hasAProducts() {
-    return Arrays.asList(
-        getTotalNames(),
-        getTotalPrices(),
-        getTotalButtons()).contains(6);
-  }
 
 }

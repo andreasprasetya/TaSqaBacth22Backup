@@ -22,12 +22,13 @@ public class AuthenticationSignInTestStep {
     signInPage = new SignInPage(driver);
   }
 
-  @When("Masukkan email {string} dan password {string} valid")
+  @When("Masukkan username {string} dan password {string} valid")
   public void testStep02(String email, String password) throws InterruptedException {
     Thread.sleep(1000);
     signInPage.setUsername(email);
     Thread.sleep(1000);
     signInPage.setPassword(password);
+    Thread.sleep(1000);
   }
 
   @And("Klik tombol login untuk login valid")
@@ -35,7 +36,7 @@ public class AuthenticationSignInTestStep {
     signInPage.onClick();
   }
 
-  @Then("Pengguna berhasil masuk ke halaman absen")
+  @Then("Pengguna berhasil masuk ke halaman produk")
   public void testStep04() {
     String expected = "https://magang.dikahadir.com/apps/absent";
     String actual = driver.getCurrentUrl();
