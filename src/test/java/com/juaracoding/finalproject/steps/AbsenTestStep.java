@@ -12,25 +12,25 @@ import org.openqa.selenium.WebDriver;
 
 
 public class AbsenTestStep {
-//    WebDriver driver;
-//    SignInPage signInPage;
-//    AbsenPage absenPage;
-//
-//   @Given("Pengguna berada di halaman Home")
-//    public void testStep01() {
-//       driver = DriverSingleton.createOrGetDriver();
-//       driver.get("https://magang.dikahadir.com/apps/absent");
-//        signInPage = new SignInPage(driver);
-//        absenPage = new AbsenPage(driver);
-//       signInPage.login(" hadirsqa1@gmail.com", "SQA@Hadir12345");
-//    }
-//
-//    @And("Pengguna Harus mengclik button absen")
-//   public void penggunaHarusMengclikButtonAbsen() throws InterruptedException {
-//        System.out.println("Lgi di posisis klik button");
-//        signInPage.onClick();
-//        Thread.sleep(2000);
-//    }
+    WebDriver driver;
+    SignInPage signInPage;
+    AbsenPage absenPage;
+
+   @Given("Pengguna berada di halaman Home")
+    public void testStep01() {
+       driver = DriverSingleton.createOrGetDriver();
+       driver.get("https://magang.dikahadir.com/apps/absent");
+        signInPage = new SignInPage(driver);
+        absenPage = new AbsenPage(driver);
+       signInPage.login(" hadirsqa1@gmail.com", "SQA@Hadir12345");
+    }
+
+    @And("Pengguna Harus mengclik button absen")
+   public void penggunaHarusMengclikButtonAbsen() throws InterruptedException {
+        System.out.println("Lgi di posisis klik button");
+        signInPage.onClick();
+        Thread.sleep(2000);
+    }
 //
 //    @And("Pengguna mengambil foto selfie dengan wajah terlihat")
 //    public void penggunaMengambilFotoSelfieDenganWajahTerlihat() {

@@ -36,10 +36,10 @@ public class AbsenPage {
       assert value != null;
       return value.length();
   }
-//    Select select = new Select(dropDown); // dropDown bertipe WebElement
-//    public int getTipe() {
-////        return select.getOptions().size(); // jumlah item di dropdown
-//    }
+//   Select select = new Select(dropDown); // dropDown bertipe WebElement
+//   public int getTipe() {
+//      return select.getOptions().size(); // jumlah item di dropdown
+//  }
         public void setNote(String value) {
 
             noteTextField.sendKeys(value);  // Mengisi catatan baru
@@ -50,7 +50,7 @@ public class AbsenPage {
   }
 
 
-//
+
 //  public void login(String email, String password) {
 //    setUsername(email);
 //    setPassword(password);
