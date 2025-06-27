@@ -6,6 +6,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
 
 public class AbsenPage {
   WebDriver driver;
@@ -13,10 +16,10 @@ public class AbsenPage {
     @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[1]/div[2]/div[1]/button[1]")
     WebElement buttonAbsen;
 
-  @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[1]/div[2]/div[1]/button[1]")
+  @FindBy(xpath = "/html/body/div[2]/div[3]/div/div/div/button")
     WebElement  buttonCamera;
 
-  @FindBy(xpath = "/html/body/div[2]/div[3]/div[2]/form/div[1]/div[2]/div")
+  @FindBy(xpath = "/html/body/div[2]/div[3]/div[2]/form/div[1]")
     WebElement  timePicker;
 
   @FindBy(xpath = "/html/body/div[2]/div[3]/div[2]/form/div[2]")
@@ -42,33 +45,26 @@ public class AbsenPage {
         buttonCamera.click();
     }
 
-  public int getTotalTime() {
-      String value = timePicker.getAttribute("value");
-      assert value != null;
-      return value.length();
-  }
-  // dropDown bertipe WebElement
-//   public int getTipe() {
-//       Select select = new Select(dropDown);
-//       return select.getOptions().size(); // jumlah item di dropdown
-//  }
-        public void setNote(String value) {
-            noteTextField.sendKeys(value);  // Mengisi catatan baru
-        }
-
-  public void onclickAbsenMasuk() {
-    buttonAbsenMasuk.click();
+  public int isiJamMasukOtomatis() {
+      LocalTime now = LocalTime.now();
+      DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+      String jam = now.format(formatter);
+      timePicker.clear();
+      timePicker.sendKeys(jam);
+      System.out.println("Jam masuk otomatis diisi: " + jam);
+      return 0;
   }
 
-    public void onClick() {
+    public void pilihDariDropdown(String value) {
+        Select select = new Select(dropDown);
+        select.selectByVisibleText(value);
     }
-
-
-//  public void login(String email, String password) {
-//    setUsername(email);
-//    setPassword(password);
-//    onClick();
-//}
-
+    public void isiNote(String note) {
+        noteTextField.clear();
+        noteTextField.sendKeys(note);
+    }
+          public void onclickAbsenMasuk() {
+              buttonAbsenMasuk.click();
+          }
 
 }

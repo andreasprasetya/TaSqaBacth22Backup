@@ -28,7 +28,7 @@ public class AbsenTestStep {
     @And("Pengguna Harus mengclik button absen")
     public void penggunaHarusMengclikButtonAbsen() throws InterruptedException {
         System.out.println("Lgi di posisis klik button");
-        signInPage.onClick();
+        absenPage.onclickAbsenMasuk();
         Thread.sleep(2000);
     }
 
@@ -41,6 +41,7 @@ public class AbsenTestStep {
 //    public void munculFormAbsen() {
 //
 //    }
+
 //   @Then("Jam masuk otomatis muncul")
 //    public void penggunaMemilihJamMasuk() {
 //
@@ -48,7 +49,7 @@ public class AbsenTestStep {
 //
 //   @When("Pengguna memilih opsi {string}")
 //    public void penggunaMemilihOpsi(String arg0) {
-//
+//   absenPage.pilihDariDropdown(opsi);
 //    }
 //
 //   @And("Pengguna menambahkan catatan {string}")
