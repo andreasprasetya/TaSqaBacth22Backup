@@ -16,27 +16,27 @@ public class AbsenTestStep {
     SignInPage signInPage;
     AbsenPage absenPage;
 
-   @Given("Pengguna berada di halaman Home")
+    @Given("Pengguna berada di halaman Home")
     public void testStep01() {
-       driver = DriverSingleton.createOrGetDriver();
-       driver.get("https://magang.dikahadir.com/apps/absent");
-        signInPage = new SignInPage(driver);
+        driver = DriverSingleton.createOrGetDriver();
+        driver.get("https://magang.dikahadir.com/apps/absent");
+         signInPage = new SignInPage(driver);
         absenPage = new AbsenPage(driver);
-       signInPage.login(" hadirsqa1@gmail.com", "SQA@Hadir12345");
+        signInPage.login(" hadirsqa1@gmail.com", "SQA@Hadir12345");
     }
 
     @And("Pengguna Harus mengclik button absen")
-   public void penggunaHarusMengclikButtonAbsen() throws InterruptedException {
+    public void penggunaHarusMengclikButtonAbsen() throws InterruptedException {
         System.out.println("Lgi di posisis klik button");
         signInPage.onClick();
         Thread.sleep(2000);
     }
-//
-//    @And("Pengguna mengambil foto selfie dengan wajah terlihat")
-//    public void penggunaMengambilFotoSelfieDenganWajahTerlihat() {
-//        absenPage.onClick();
-//    }
-//
+
+    @And("Pengguna mengambil foto selfie dengan wajah terlihat")
+    public void penggunaMengambilFotoSelfieDenganWajahTerlihat() {
+        absenPage.onClickCamera();
+    }
+
 //    @Then("Muncul Form Absen")
 //    public void munculFormAbsen() {
 //

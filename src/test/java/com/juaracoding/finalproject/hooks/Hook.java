@@ -10,9 +10,9 @@ public class Hook {
   public void initialize() {
     DriverSingleton.createOrGetDriver();
   }
-
-  @After
-  public void finalTeardown() {
-    DriverSingleton.quitDriver();
-  }
+//
+//  @After
+//  public void finalTeardown() {
+//    DriverSingleton.quitDriver();
+//  }
 }
