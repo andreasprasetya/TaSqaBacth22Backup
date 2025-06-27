@@ -48,15 +48,15 @@ public class AbsenPage {
       return value.length();
   }
   // dropDown bertipe WebElement
-   public int getTipe() {
-       Select select = new Select(dropDown);
-       return select.getOptions().size(); // jumlah item di dropdown
-  }
+//   public int getTipe() {
+//       Select select = new Select(dropDown);
+//       return select.getOptions().size(); // jumlah item di dropdown
+//  }
         public void setNote(String value) {
             noteTextField.sendKeys(value);  // Mengisi catatan baru
         }
 
-  public void setButtonAbsenMasuk() {
+  public void onclickAbsenMasuk() {
     buttonAbsenMasuk.click();
   }
 
