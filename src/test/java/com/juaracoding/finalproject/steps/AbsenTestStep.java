@@ -37,10 +37,10 @@ public class AbsenTestStep {
         absenPage.onClickCamera();
     }
 
-//    @Then("Muncul Form Absen")
-//    public void munculFormAbsen() {
-//
-//    }
+    @Then("Muncul Form Absen")
+    public void munculFormAbsen() {
+
+    }
 
 //   @Then("Jam masuk otomatis muncul")
 //    public void penggunaMemilihJamMasuk() {
