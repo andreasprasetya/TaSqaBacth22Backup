@@ -42,10 +42,10 @@ public class AbsenTestStep {
 
     }
 
-//   @Then("Jam masuk otomatis muncul")
-//    public void penggunaMemilihJamMasuk() {
-//
-//    }
+   @Then("Jam masuk otomatis muncul")
+    public void penggunaMemilihJamMasuk() {
+
+    }
 //
 //   @When("Pengguna memilih opsi {string}")
 //    public void penggunaMemilihOpsi(String arg0) {
