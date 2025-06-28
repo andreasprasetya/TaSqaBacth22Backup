@@ -34,8 +34,9 @@
 //    }
 //
 //    @When("Tunggu sampai muncul side bar")
-//    public void testStep03() {
+//    public void testStep03() throws InterruptedException {
 //        wait.until(ExpectedConditions.visibilityOf(LogoutPage.onLogoutClick()));
+//        Thread.sleep(1000);
 //    }
 //
 //    @Then("Klik Button logout")
