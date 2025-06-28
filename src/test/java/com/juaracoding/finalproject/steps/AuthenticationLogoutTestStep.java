@@ -29,7 +29,7 @@
 //
 //    @When("Klik menu bar")
 //    public void testStep02() throws InterruptedException {
-//        LogoutPage.onMenuClick(); // klik tombol ☰
+//        LogoutPage.onMenuClick();
 //        Thread.sleep(1000);
 //    }
 //
