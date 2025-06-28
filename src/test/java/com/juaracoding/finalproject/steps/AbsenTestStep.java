@@ -39,29 +39,38 @@ public class AbsenTestStep {
 
     @Then("Muncul Form Absen")
     public void munculFormAbsen() {
-
+        System.out.println("Form Absen muncul. Jam masuk: " + absenPage.getJamMasuk());
     }
 
-   @Then("Jam masuk otomatis muncul")
+    @Then("Jam masuk otomatis muncul")
     public void penggunaMemilihJamMasuk() {
-
+        String jamMasuk = absenPage.getJamMasuk();
+        System.out.println("Jam masuk yang diambil: " + jamMasuk);
     }
-//
-//   @When("Pengguna memilih opsi {string}")
-//    public void penggunaMemilihOpsi(String arg0) {
-//   absenPage.pilihDariDropdown(opsi);
-//    }
-//
-//   @And("Pengguna menambahkan catatan {string}")
-//    public void penggunaMenambahkanCatatan(String arg0) {
-//}
-//
-//    @And("Pengguna menekan tombol Absen Masuk")
-//   public void penggunaMenekanTombolAbsenMasuk() {
-//
-//    }
-//
-//   @Then("Sistem menampilkan pesan {string}")
-//   public void sistemMenampilkanPesan(String arg0) {
-//   }
+
+    @When("Pengguna memilih opsi {string}")
+    public void penggunaMemilihOpsi(String opsi) {
+        absenPage.pilihDariDropdown(opsi);
+        System.out.println("Opsi dropdown yang dipilih: " + absenPage.getSelectedDropdownValue());
+    }
+
+    @And("Pengguna menambahkan catatan {string}")
+    public void penggunaMenambahkanCatatan(String note) {
+        absenPage.isiNote(note);
+        System.out.println("Catatan yang diisi: " + absenPage.getNote());
+    }
+
+    @And("Pengguna menekan tombol Absen Masuk")
+    public void penggunaMenekanTombolAbsenMasuk() {
+        absenPage.onclickAbsenMasuk();
+        System.out.println("Tombol Absen Masuk diklik.");
+    }
+
+    @Then("Sistem menampilkan pesan {string}")
+    public void sistemMenampilkanPesan(String pesan) {
+        // Implementasi pengambilan pesan dari UI jika ada, misal dengan WebElement pesanElement
+        // String pesanUI = pesanElement.getText();
+        // Assert.assertEquals(pesanUI, pesan);
+        System.out.println("Pesan yang diharapkan: " + pesan);
+    }
 }

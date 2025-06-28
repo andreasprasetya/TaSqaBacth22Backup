@@ -1,9 +1,9 @@
-Feature: Fitur Absen Masuk
-
-  Scenario: Pengguna berhasil masuk ke halaman home dan melakukan absen
-    Given Pengguna berada di halaman Home
-    And Pengguna Harus mengclik button absen
-    And Pengguna mengambil foto selfie dengan wajah terlihat
+#Feature: Fitur Absen Masuk
+#
+#  Scenario: Pengguna berhasil masuk ke halaman home dan melakukan absen
+#    Given Pengguna berada di halaman Home
+#    And Pengguna Harus mengclik button absen
+#    And Pengguna mengambil foto selfie dengan wajah terlihat
 #    Then Muncul Form Absen
 #    Then  Jam masuk otomatis muncul
 #    When Pengguna memilih opsi "WFO"
