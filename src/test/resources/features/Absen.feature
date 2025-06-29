@@ -13,3 +13,12 @@ Feature: Fitur Absen Masuk
     And Pengguna menekan tombol Absen Masuk
     Then Sistem menampilkan pesan "Absen masuk berhasil"
 
+#  Scenario: Pengguna berhasil masuk ke halaman home dan melakukan absen
+#    Given Pengguna berada di halaman Home
+#    And Memilih History Absen
+#    Then Click Button keluar
+#    And Menuju ke  Halaman Koreksi Absen
+#    Then Jam masuk otomatis muncul
+#    Then  Isi Jam keluaR
+#    And Click button ajukan koreksi
+

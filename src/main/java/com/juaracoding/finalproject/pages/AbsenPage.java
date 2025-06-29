@@ -19,8 +19,8 @@ public class AbsenPage {
   @FindBy(xpath = "/html/body/div[2]/div[3]/div/div/div/button")
     WebElement  buttonCamera;
 
-  @FindBy(xpath = "/html/body/div[2]/div[3]/div[2]/form/div[1]")
-    WebElement  timePicker;
+  @FindBy(xpath = "//input[@id='jam-masuk' or @type='time']")
+  WebElement inputJamMasuk;
 
   @FindBy(xpath = "/html/body/div[2]/div[3]/div[2]/form/div[2]")
     WebElement dropDown;
@@ -45,15 +45,9 @@ public class AbsenPage {
         buttonCamera.click();
     }
 
-  public int isiJamMasukOtomatis() {
-      LocalTime now = LocalTime.now();
-      DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-      String jam = now.format(formatter);
-      timePicker.clear();
-      timePicker.sendKeys(jam);
-      System.out.println("Jam masuk otomatis diisi: " + jam);
-      return 0;
-  }
+    public String getJamMasukValue() {
+        return inputJamMasuk.getAttribute("value");
+    }
 
     public void pilihDariDropdown(String value) {
         Select select = new Select(dropDown);
@@ -66,10 +60,6 @@ public class AbsenPage {
           public void onclickAbsenMasuk() {
               buttonAbsenMasuk.click();
           }
-
-    public String getJamMasuk() {
-        return timePicker.getAttribute("value");
-    }
 
     public String getNote() {
         return noteTextField.getAttribute("value");
