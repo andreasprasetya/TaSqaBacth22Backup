@@ -12,3 +12,4 @@ Feature: Fitur Absen Masuk
     And Pengguna menambahkan catatan "Bekerja dari rumah"
     And Pengguna menekan tombol Absen Masuk
     Then Sistem menampilkan pesan "Absen masuk berhasil"
+
