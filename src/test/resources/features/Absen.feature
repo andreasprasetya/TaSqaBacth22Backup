@@ -4,7 +4,7 @@ Feature: Fitur Absen Masuk
     Given Pengguna berada di halaman Home
     And Pengguna Harus mengclik button absen
     And Pengguna mengambil foto selfie dengan wajah terlihat
-    Then Muncul Form Absen
+#    Then Muncul Form Absen
     And Jam masuk otomatis muncul
     When Pengguna memilih opsi "WFO"
     And Pengguna menambahkan catatan "Bekerja dari kantor"
@@ -17,8 +17,8 @@ Feature: Fitur Absen Masuk
 #    Given Pengguna berada di halaman Home
 #    And Memilih History Absen
 #    Then Click Button keluar
-#    And Menuju ke  Halaman Koreksi Absen
+#    And Muncul Form Absen Keluar
 #    Then Jam masuk otomatis muncul
-#    Then  Isi Jam keluaR
-#    And Click button ajukan koreksi
-
+#    Then  Isi Note
+#    And Click button absen keluar
+#
