@@ -13,12 +13,12 @@ Feature: Fitur Absen Masuk
     And Pengguna menekan tombol Absen Masuk
     Then Sistem menampilkan pesan "Absen masuk berhasil"
 
-#  Scenario: Pengguna berhasil masuk ke halaman home dan melakukan absen
-#    Given Pengguna berada di halaman Home
-#    And Memilih History Absen
-#    Then Click Button keluar
-#    And Muncul Form Absen Keluar
-#    Then Jam masuk otomatis muncul
-#    Then  Isi Note
-#    And Click button absen keluar
-#
+  Scenario: Pengguna berhasil masuk ke halaman home dan melakukan absen
+    Given Pengguna berada di halaman Home
+    And Memilih History Absen
+    Then Click Button keluar
+    And Muncul Form Absen Keluar
+    Then Jam masuk otomatis muncul
+    Then  Isi Note
+    And Click button absen keluar
+
