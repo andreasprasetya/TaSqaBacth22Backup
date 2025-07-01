@@ -84,7 +84,7 @@
 //        }
 //    }
 //
-//    @And("Pengguna menekan tombol Absen Masuk")
+//    @And("Pengguna menekan tombol Absen Keluar")
 //    public void submitAbsenKeluar() {
 //        // Get data before submission for verification
 //        String waktuKeluar = absenKeluarPage.getTimeKeluar();

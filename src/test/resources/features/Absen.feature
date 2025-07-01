@@ -20,5 +20,5 @@ Feature: Fitur Absen Masuk
 #    And Muncul Form Absen Keluar
 #    Then Jam masuk otomatis muncul
 #    Then Pengguna menambahkan catatan "Bekerja dari rumah"
-#    And Pengguna menekan tombol Absen Masuk
+#    And Pengguna menekan tombol Absen Keluar
 #
