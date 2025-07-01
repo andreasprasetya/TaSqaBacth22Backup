@@ -11,6 +11,9 @@ Feature: Authentication feature test
     Examples:
       | username      | password     |
       | hadirsqa1@gmail.com | SQA@Hadir12345 |
+#      |komar@gmail.com | Komar123 |
+
+
 
 #  Scenario Outline: Login dengan kredensial yang tidak valid
 #    Given Buka halaman login untuk pengujian login invalid
