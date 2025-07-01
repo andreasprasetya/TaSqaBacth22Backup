@@ -33,9 +33,9 @@ public class SignInPage {
     usernameField.sendKeys(value);
   }
 
-  public void setUsernameField(String email) {
-    passwordField.sendKeys(email);
-  }
+//  public void setUsernameField(String email) {
+//    passwordField.sendKeys(email);
+//  }
 
   public void setPassword(String password) {
     passwordField.sendKeys(password);

@@ -1,5 +1,6 @@
 Feature: Fitur Absen Masuk
 
+@High
   Scenario: Pengguna berhasil masuk ke halaman home dan melakukan absen
     Given Pengguna berada di halaman Home
     And Pengguna Harus mengclik button absen
@@ -12,12 +13,13 @@ Feature: Fitur Absen Masuk
     And Pengguna menambahkan catatan "Bekerja dari Office atau Rumah"
     And Pengguna menekan tombol Absen Masuk
 #    Then Sistem menampilkan pesan "Absen masuk berhasil"
-#
+##
   Scenario: Pengguna berhasil masuk ke halaman home dan melakukan absen
+    Given Pengguna Harus Melakukan Login Kembali
     Given Pengguna berada di halaman Home
     Then Click Button keluar
     And Muncul Form Absen Keluar
-    Then Jam masuk otomatis muncul
-    Then   And Pengguna menambahkan catatan "Suda selesai bekerja"
+    Then Jam Keluar otomatis muncul
+    And Pengguna menambahkan catatan "Suda selesai bekerja dari Office atau Rumah"
     And Pengguna menekan tombol Absen Keluar
 

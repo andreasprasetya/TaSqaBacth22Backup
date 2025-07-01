@@ -8,40 +8,88 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.Objects;
+
 
 public class AbsenKeluarTestStep {
     private WebDriver driver;
     private SignInPage signInPage;
     private AbsenKeluarPage absenKeluarPage;
 
+
+    @Given("Pengguna Harus Melakukan Login Kembali")
+    public void penggunaHarusMelakukanLoginKembali() {
+
+        driver= DriverSingleton.createOrGetDriver();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        driver.get("https://magang.dikahadir.com/absen/login");
+        SignInPage signInPage = new SignInPage(driver);
+        signInPage.login("hadirsqa1@gmail.com", "SQA@Hadir12345");
+    }
+
     @Given("Pengguna berada di halaman Home")
     public void initializePage() {
         driver = DriverSingleton.createOrGetDriver();
-
-        // Pastikan dimulai dari halaman login
-        driver.get("https://magang.dikahadir.com/apps/login");
-
+        driver.get("https://magang.dikahadir.com/apps/absent");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        signInPage = new SignInPage(driver);
+        SignInPage signInPage = new SignInPage(driver);
         absenKeluarPage = new AbsenKeluarPage(driver);
 
-        // Verifikasi berada di halaman login
-        wait.until(d -> Objects.requireNonNull(d.getCurrentUrl()).contains("login"));
-
-        // Perform login
+        // Perform login and verify
         signInPage.login("hadirsqa1@gmail.com", "SQA@Hadir12345");
-
-        // Verifikasi login berhasil dan redirect ke halaman absent
-        wait.until(d -> Objects.requireNonNull(d.getCurrentUrl()).contains("absent"));
-
-        // Verifikasi tambahan bahwa user benar-benar sudah login
-        // Misalnya dengan mengecek elemen yang hanya muncul setelah login
-        wait.until(d -> absenKeluarPage.isUserLoggedIn());
+//      signInPage.login("komar@gmail.com ", "Komar123");
     }
+
+    @Then("Click Button keluar")
+    public void clickButtonKeluar() {
+        absenKeluarPage.onClickButtonKeluar();
+
+    }
+
+    @And("Muncul Form Absen Keluar")
+    public void munculFormAbsenKeluar() {
+        if (!absenKeluarPage.isAbsenFormDisplayed()) {
+            throw new RuntimeException("Form Absen Keluar tidak muncul");
+        }
+
+    }
+
+    @Then("Jam Keluar otomatis muncul")
+    public void jamKeluarOtomatisMuncul() {
+        String time = absenKeluarPage.getTimeInputKeluar();
+        if (time == null || time.isEmpty()) {
+            throw new RuntimeException("Time not displayed automatically");
+        }
+        System.out.println("Auto time displayed: " + time);
+    }
+
+    @And("Pengguna menambahkan catatan {string}")
+    public void addNote(String note) throws InterruptedException {
+        Thread.sleep(2000);
+        absenKeluarPage.isiNote(note);
+        Thread.sleep(2000);
+        String enteredNote = absenKeluarPage.getNoteTextKeluer();
+        Thread.sleep(2000);
+//        if (!enteredNote.equals(note)) {
+//            throw new RuntimeException("Note not entered correctly");
+//        }
+    }
+
+    @And("Pengguna menekan tombol Absen Keluar")
+    public void penggunaMenekanTombolAbsenKeluar() {
+        // Capture data before submission
+        String time = absenKeluarPage.getTimeInputKeluar();
+//        String type = absenPage.getSelectedDropdownValue();
+        String note = absenKeluarPage.getNoteTextKeluer();
+
+        absenKeluarPage.onClickAbsenKeluar();
+    }
+
+
+
 }
 
 

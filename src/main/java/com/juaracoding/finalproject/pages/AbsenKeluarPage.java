@@ -1,6 +1,7 @@
 package com.juaracoding.finalproject.pages;
 
 
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -65,7 +66,7 @@ public class AbsenKeluarPage {
         noteTextFieldKeluar.sendKeys(note);
     }
 
-    public String getNoteText() {
+    public String getNoteTextKeluer() {
         wait.until(ExpectedConditions.visibilityOf(noteTextFieldKeluar));
         return noteTextFieldKeluar.getAttribute("value");
     }
@@ -75,9 +76,6 @@ public class AbsenKeluarPage {
         buttonAbsenKeluar.click();
     }
 
-
-    public Object isUserLoggedIn() {
-    }
 }
 
 
