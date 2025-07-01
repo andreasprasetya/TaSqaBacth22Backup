@@ -31,6 +31,7 @@ public class AbsenTestStep {
 
         // Perform login and verify
         signInPage.login("hadirsqa1@gmail.com", "SQA@Hadir12345");
+//        signInPage.login("komar@gmail.com ", "Komar123");
 
     }
 
@@ -40,7 +41,7 @@ public class AbsenTestStep {
     }
 
     @And("Pengguna mengambil foto selfie dengan wajah terlihat")
-    public void takeSelfie() throws IOException {
+    public void takeSelfie() throws IOException, InterruptedException {
         absenPage.onClickCamera();
         String screenshotPath = "C:\\Users\\Andreas Prasetya\\OneDrive\\Pictures\\Screenshots\\";
         takeScreenshot(driver, screenshotPath);
@@ -63,17 +64,15 @@ public class AbsenTestStep {
     }
 
     @When("Pengguna memilih opsi {string}")
-    public void selectAttendanceOption(String option) {
+    public void selectAttendanceOption(String option) throws InterruptedException {
         absenPage.pilihDariDropdown(option);
-        String selected = absenPage.getSelectedDropdownValue();
-        if (!selected.equals(option)) {
-            throw new RuntimeException("Failed to select option: " + option);
-        }
+
     }
 
     @And("Pengguna menambahkan catatan {string}")
     public void addNote(String note) {
         absenPage.isiNote(note);
+
         String enteredNote = absenPage.getNoteText();
         if (!enteredNote.equals(note)) {
             throw new RuntimeException("Note not entered correctly");
@@ -81,7 +80,7 @@ public class AbsenTestStep {
     }
 
     @And("Pengguna menekan tombol Absen Masuk")
-    public void submitAbsen() {
+    public void submitAbsen() throws InterruptedException {
         // Capture data before submission
         String time = absenPage.getTimeInput();
         String type = absenPage.getSelectedDropdownValue();

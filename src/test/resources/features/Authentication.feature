@@ -11,7 +11,7 @@ Feature: Authentication feature test
     Examples:
       | username      | password     |
       | hadirsqa1@gmail.com | SQA@Hadir12345 |
-#      |komar@gmail.com | Komar123 |
+#     |komar@gmail.com | Komar123 |
 
 
 
