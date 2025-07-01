@@ -67,23 +67,24 @@ public class AbsenPage {
     }
 
     public void pilihDariDropdown(String value) throws InterruptedException {
+        Thread.sleep(2000);
         wait.until(ExpectedConditions.visibilityOf(selectOptions));
         selectOptions.click();
-
-
-    }
-
-    public String getSelectedDropdownValue() throws InterruptedException {
-//        Thread.sleep(2000);
+        Thread.sleep(2000);
         wait.until(ExpectedConditions.visibilityOf(selectOptionsWFH));
-        String text = selectOptionsWFH.getText();
         selectOptionsWFH.click();
-        return text;// Mengembalikan teks yang dipilih
     }
 
-    public void isiNote(String note) {
+//    public void getSelectedDropdownValue() throws InterruptedException {
+//
+//    }
+
+    public void isiNote(String note) throws InterruptedException {
+        Thread.sleep(2000);
         wait.until(ExpectedConditions.visibilityOf(noteTextField));
+
         noteTextField.clear();
+        Thread.sleep(2000);
         noteTextField.sendKeys(note);
     }
 
