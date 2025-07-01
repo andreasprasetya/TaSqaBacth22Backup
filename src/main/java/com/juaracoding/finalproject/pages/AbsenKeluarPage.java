@@ -15,9 +15,6 @@ public class AbsenKeluarPage {
     private final WebDriverWait wait;
     WebDriver driver;
 
-    @FindBy(xpath = "//*[@id=\"__next\"]/div/div/div[1]/div[4]/div[2]/div[1]")
-    WebElement historyAbsen;
-
     @FindBy(xpath = "//*[@id=\"__next\"]/div/div/div[1]/div[4]/div[2]/div[1]/div[2]/button")
     WebElement buttonKeluar;
 
@@ -37,10 +34,6 @@ public class AbsenKeluarPage {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         PageFactory.initElements(driver, this);
-    }
-
-    public void selecHistoryAbsen() {
-
     }
 
     public void onClickButtonKeluar() {
@@ -83,8 +76,8 @@ public class AbsenKeluarPage {
     }
 
 
-
-
+    public Object isUserLoggedIn() {
+    }
 }
 
 

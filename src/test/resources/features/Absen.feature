@@ -15,7 +15,6 @@ Feature: Fitur Absen Masuk
 #
   Scenario: Pengguna berhasil masuk ke halaman home dan melakukan absen
     Given Pengguna berada di halaman Home
-    And Memilih History Absen
     Then Click Button keluar
     And Muncul Form Absen Keluar
     Then Jam masuk otomatis muncul
