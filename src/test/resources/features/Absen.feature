@@ -9,7 +9,7 @@ Feature: Fitur Absen Masuk
     When Pengguna memilih opsi "WFO"
     And Pengguna menambahkan catatan "Bekerja dari kantor"
     When Pengguna memilih opsi "WFH"
-    And Pengguna menambahkan catatan "Bekerja dari rumah"
+    And Pengguna menambahkan catatan "Bekerja dari Office atau Rumah"
     And Pengguna menekan tombol Absen Masuk
 #    Then Sistem menampilkan pesan "Absen masuk berhasil"
 #
@@ -19,6 +19,6 @@ Feature: Fitur Absen Masuk
     Then Click Button keluar
     And Muncul Form Absen Keluar
     Then Jam masuk otomatis muncul
-    Then Pengguna menambahkan catatan "Bekerja dari rumah"
+    Then   And Pengguna menambahkan catatan "Suda selesai bekerja"
     And Pengguna menekan tombol Absen Keluar
 
