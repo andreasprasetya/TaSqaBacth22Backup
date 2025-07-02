@@ -31,6 +31,7 @@ public class AbsenKeluarPage {
     @FindBy(xpath = "/html/body/div[2]/div[3]/div/form/div/div[3]/button")
     WebElement buttonAbsenKeluar;
 
+
     public AbsenKeluarPage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
