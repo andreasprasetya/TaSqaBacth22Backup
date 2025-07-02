@@ -50,6 +50,9 @@ public class SignInPage {
     setPassword(password);
     onClick();
   }
+//
+//    public String getErrorMessage() {
+//    }
 
 //    public String getErrorMessage() {
 //        return errorMessage.getText();

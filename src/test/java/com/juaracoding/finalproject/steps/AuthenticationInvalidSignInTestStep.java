@@ -7,6 +7,7 @@ import com.juaracoding.finalproject.pages.SignInPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
+import org.testng.Assert;
 
 public class AuthenticationInvalidSignInTestStep {
   WebDriver driver;
@@ -32,7 +33,6 @@ public class AuthenticationInvalidSignInTestStep {
   public void testStep03() {
     signInPage.onClick();
   }
-
 
 
 //  @Then("Pengguna berhasil masuk ke halaman absen")

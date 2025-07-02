@@ -6,11 +6,11 @@ import com.juaracoding.finalproject.pages.SignInPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 
 
@@ -18,6 +18,9 @@ public class AbsenKeluarTestStep {
     private WebDriver driver;
     private SignInPage signInPage;
     private AbsenKeluarPage absenKeluarPage;
+    private  JavascriptExecutor jsExecutor;
+    private WebDriverWait wait;
+
 
 
     @Given("Pengguna Harus Melakukan Login Kembali")
@@ -28,6 +31,7 @@ public class AbsenKeluarTestStep {
         driver.get("https://magang.dikahadir.com/absen/login");
         SignInPage signInPage = new SignInPage(driver);
         signInPage.login("hadirsqa1@gmail.com", "SQA@Hadir12345");
+        //  signInPage.login("komar@gmail.com", "Komar123 ");
     }
 
     @Given("Pengguna berada di halaman Home")
@@ -44,7 +48,8 @@ public class AbsenKeluarTestStep {
     }
 
     @Then("Click Button keluar")
-    public void clickButtonKeluar() {
+    public void clickButtonKeluar(WebElement element) {
+        WebElement clickableElement = wait.until(ExpectedConditions.elementToBeClickable(element));
         absenKeluarPage.onClickButtonKeluar();
 
     }
@@ -87,6 +92,28 @@ public class AbsenKeluarTestStep {
 
         absenKeluarPage.onClickAbsenKeluar();
     }
+
+
+    public void AutoScrollAndClick(WebDriver driver) {
+        this.driver = driver;
+        this.jsExecutor = (JavascriptExecutor) driver;
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+    }
+
+    public void scrollIntoView(WebElement element) {
+        jsExecutor.executeScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center', inline: 'center'});", element);
+        wait.until(ExpectedConditions.visibilityOf(element));
+        try {
+            Thread.sleep(500); // Beri waktu untuk animasi
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+
+//    public void scrollAndClick(WebElement element) {
+//        scrollIntoView(element);
+//        element.click();
+//    }
 
 
 
