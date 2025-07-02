@@ -27,7 +27,7 @@ public class AbsenPage {
     @FindBy(css = "div[role='combobox']")
     WebElement selectOptions; // Diperbaiki xpath untuk select element
 
-    @FindBy(xpath= "//ul[@aria-labelledby='is_wfh']/li[2]")
+    @FindBy(xpath = "//ul[@aria-labelledby='is_wfh']/li[2]")
     WebElement selectOptionsWFH; // Diperbaiki xpath untuk select element
 
     @FindBy(xpath = "//label[@id='wfh']/following-sibling::div//input")
@@ -80,35 +80,33 @@ public class AbsenPage {
         return text;// Mengembalikan teks yang dipilih
     }
 
-    public void isiNote(String note) {
-//    public void getSelectedDropdownValue() throws InterruptedException {
-//
-//    }
 
-        public void isiNote(String note) throws InterruptedException {
-            Thread.sleep(2000);
-            wait.until(ExpectedConditions.visibilityOf(noteTextField));
+    public void isiNote(String note) throws InterruptedException {
+        Thread.sleep(2000);
+        wait.until(ExpectedConditions.visibilityOf(noteTextField));
 
-            noteTextField.clear();
-            Thread.sleep(2000);
-            noteTextField.sendKeys(note);
+        noteTextField.clear();
+        Thread.sleep(2000);
+        noteTextField.sendKeys(note);
+    }
+
+    public String getNoteText() {
+        wait.until(ExpectedConditions.visibilityOf(noteTextField));
+        return noteTextField.getAttribute("value");
+    }
+
+    public void onclickAbsenMasuk() {
+        wait.until(ExpectedConditions.elementToBeClickable(buttonAbsenMasuk));
+        buttonAbsenMasuk.click();
+    }
+
+    public boolean isAbsenFormDisplayed() {
+        try {
+            wait.until(ExpectedConditions.visibilityOf(absenForm));
+            return !absenForm.isDisplayed();
+        } catch (Exception e) {
+            return true;
         }
+    }
+}
 
-        public String getNoteText() {
-            wait.until(ExpectedConditions.visibilityOf(noteTextField));
-            return noteTextField.getAttribute("value");
-        }
-
-        public void onclickAbsenMasuk() {
-            wait.until(ExpectedConditions.elementToBeClickable(buttonAbsenMasuk));
-            buttonAbsenMasuk.click();
-        }
-
-        public boolean isAbsenFormDisplayed() {
-            try {
-                wait.until(ExpectedConditions.visibilityOf(absenForm));
-                return !absenForm.isDisplayed();
-            } catch (Exception e) {
-                return true;
-            }
-        }
