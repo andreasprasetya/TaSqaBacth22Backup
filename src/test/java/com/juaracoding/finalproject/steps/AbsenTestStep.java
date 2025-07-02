@@ -33,7 +33,7 @@ public class AbsenTestStep {
     }
 
     @And("Pengguna mengambil foto selfie dengan wajah terlihat")
-    public void penggunaMengambilFotoSelfieDenganWajahTerlihat() {
+    public void penggunaMengambilFotoSelfieDenganWajahTerlihat() throws InterruptedException {
         absenPage.onClickCamera();
     }
 
@@ -42,25 +42,37 @@ public class AbsenTestStep {
 
     }
 
-//   @Then("Jam masuk otomatis muncul")
-//    public void penggunaMemilihJamMasuk() {
-//
-//    }
-//
-//   @When("Pengguna memilih opsi {string}")
-//    public void penggunaMemilihOpsi(String arg0) {
-//   absenPage.pilihDariDropdown(opsi);
-//    }
-//
-//   @And("Pengguna menambahkan catatan {string}")
-//    public void penggunaMenambahkanCatatan(String arg0) {
-//}
-//
-//    @And("Pengguna menekan tombol Absen Masuk")
-//   public void penggunaMenekanTombolAbsenMasuk() {
-//
-//    }
-//
+   @Then("Jam masuk otomatis muncul")
+    public void penggunaMemilihJamMasuk() {
+
+    }
+
+   @When("Pengguna memilih opsi {string}")
+    public void penggunaMemilihOpsi(String arg0) throws InterruptedException {
+       String opsi = "";
+       absenPage.pilihDariDropdown(opsi);
+    }
+
+   @And("Pengguna menambahkan catatan {string}")
+    public void penggunaMenambahkanCatatan(String arg0) throws InterruptedException {
+       Thread.sleep(2000);
+       absenPage.isiNote(absenPage.getNoteTextNasuk());
+       Thread.sleep(2000);
+       String enteredNote = absenPage.getNoteTextNasuk()    ;
+       Thread.sleep(2000);
+}
+
+    @And("Pengguna menekan tombol Absen Masuk")
+   public void penggunaMenekanTombolAbsenMasuk() throws InterruptedException {
+        // Capture data before submission
+        String time = absenPage.getTimeInput();
+//        String type = absenPage.getSelectedDropdownValue();
+        String note = absenPage.getNoteTextNasuk();
+
+        absenPage.onclickAbsenMasuk();
+
+    }
+
 //   @Then("Sistem menampilkan pesan {string}")
 //   public void sistemMenampilkanPesan(String arg0) {
 //   }
