@@ -26,17 +26,17 @@ public class AuthenticationSignInTestStep {
 
   @When("Masukkan username {string} dan password {string} valid")
   public void testStep02(String email, String password) throws InterruptedException {
-    Thread.sleep(1000);
+    Thread.sleep(50);
     signInPage.setUsername(email);
-    Thread.sleep(1000);
+    Thread.sleep(50);
     signInPage.setPassword(password);
-    Thread.sleep(1000);
+    Thread.sleep(50);
   }
 
   @And("Klik tombol login untuk login valid")
   public void testStep03() throws InterruptedException {
     signInPage.onClick();
-   Thread.sleep(2000);
+   Thread.sleep(50);
   }
 
   @Then("Pengguna berhasil masuk ke halaman absen")

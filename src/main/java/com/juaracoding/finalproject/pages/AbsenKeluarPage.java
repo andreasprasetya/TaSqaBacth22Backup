@@ -69,7 +69,7 @@ public class AbsenKeluarPage {
     }
 
 
-    public boolean isAbsenFormDisplayed() {
+    public boolean isAbsenKeluarFormDisplayed() {
         try {
             wait.until(ExpectedConditions.visibilityOf(formAbsenKeluar));
             return !formAbsenKeluar.isDisplayed();
@@ -159,4 +159,3 @@ public class AbsenKeluarPage {
 
 
 
-    

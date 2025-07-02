@@ -1,12 +1,9 @@
 package com.juaracoding.finalproject.pages;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -70,41 +67,48 @@ public class AbsenPage {
         Thread.sleep(2000);
         wait.until(ExpectedConditions.visibilityOf(selectOptions));
         selectOptions.click();
-        Thread.sleep(2000);
-        wait.until(ExpectedConditions.visibilityOf(selectOptionsWFH));
-        selectOptionsWFH.click();
+
+
     }
 
+    public String getSelectedDropdownValue() throws InterruptedException {
+//        Thread.sleep(2000);
+        Thread.sleep(2000);
+        wait.until(ExpectedConditions.visibilityOf(selectOptionsWFH));
+        String text = selectOptionsWFH.getText();
+        selectOptionsWFH.click();
+        return text;// Mengembalikan teks yang dipilih
+    }
+
+    public void isiNote(String note) {
 //    public void getSelectedDropdownValue() throws InterruptedException {
 //
 //    }
 
-    public void isiNote(String note) throws InterruptedException {
-        Thread.sleep(2000);
-        wait.until(ExpectedConditions.visibilityOf(noteTextField));
+        public void isiNote(String note) throws InterruptedException {
+            Thread.sleep(2000);
+            wait.until(ExpectedConditions.visibilityOf(noteTextField));
 
-        noteTextField.clear();
-        Thread.sleep(2000);
-        noteTextField.sendKeys(note);
-    }
-
-    public String getNoteText() {
-        wait.until(ExpectedConditions.visibilityOf(noteTextField));
-        return noteTextField.getAttribute("value");
-    }
-
-    public void onclickAbsenMasuk() {
-        wait.until(ExpectedConditions.elementToBeClickable(buttonAbsenMasuk));
-        buttonAbsenMasuk.click();
-    }
-
-    public boolean isAbsenFormDisplayed() {
-        try {
-            wait.until(ExpectedConditions.visibilityOf(absenForm));
-            return !absenForm.isDisplayed();
-        } catch (Exception e) {
-            return true;
+            noteTextField.clear();
+            Thread.sleep(2000);
+            noteTextField.sendKeys(note);
         }
-    }
 
-}
+        public String getNoteText() {
+            wait.until(ExpectedConditions.visibilityOf(noteTextField));
+            return noteTextField.getAttribute("value");
+        }
+
+        public void onclickAbsenMasuk() {
+            wait.until(ExpectedConditions.elementToBeClickable(buttonAbsenMasuk));
+            buttonAbsenMasuk.click();
+        }
+
+        public boolean isAbsenFormDisplayed() {
+            try {
+                wait.until(ExpectedConditions.visibilityOf(absenForm));
+                return !absenForm.isDisplayed();
+            } catch (Exception e) {
+                return true;
+            }
+        }

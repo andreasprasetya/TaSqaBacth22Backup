@@ -56,7 +56,7 @@ public class AbsenKeluarTestStep {
 
     @And("Muncul Form Absen Keluar")
     public void munculFormAbsenKeluar() {
-        if (!absenKeluarPage.isAbsenFormDisplayed()) {
+        if (!absenKeluarPage.isAbsenKeluarFormDisplayed()) {
             throw new RuntimeException("Form Absen Keluar tidak muncul");
         }
 
