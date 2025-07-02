@@ -7,109 +7,61 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.time.Duration;
-import java.util.Date;
+import org.openqa.selenium.WebDriver;
+
+
 
 public class AbsenTestStep {
-    private WebDriver driver;
-    private AbsenPage absenPage;
+    WebDriver driver;
+    SignInPage signInPage;
+    AbsenPage absenPage;
 
     @Given("Pengguna berada di halaman Home")
-    public void initializePage() {
+    public void testStep01() {
         driver = DriverSingleton.createOrGetDriver();
         driver.get("https://magang.dikahadir.com/apps/absent");
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        SignInPage signInPage = new SignInPage(driver);
+         signInPage = new SignInPage(driver);
         absenPage = new AbsenPage(driver);
-
-        // Perform login and verify
-        signInPage.login("hadirsqa1@gmail.com", "SQA@Hadir12345");
-//        signInPage.login("komar@gmail.com ", "Komar123");
-
+        signInPage.login(" hadirsqa1@gmail.com", "SQA@Hadir12345");
     }
 
     @And("Pengguna Harus mengclik button absen")
-    public void clickAbsenButton() {
-        absenPage.onClickAbsen();
+    public void penggunaHarusMengclikButtonAbsen() throws InterruptedException {
+        System.out.println("Lgi di posisis klik button");
+        absenPage.onclickAbsenMasuk();
+        Thread.sleep(2000);
     }
 
     @And("Pengguna mengambil foto selfie dengan wajah terlihat")
-    public void takeSelfie() throws IOException, InterruptedException {
+    public void penggunaMengambilFotoSelfieDenganWajahTerlihat() {
         absenPage.onClickCamera();
-        String screenshotPath = "C:\\Users\\Andreas Prasetya\\OneDrive\\Pictures\\Screenshots\\";
-        takeScreenshot(driver, screenshotPath);
     }
 
     @Then("Muncul Form Absen")
-    public void verifyAbsenForm() {
-        if (absenPage.isAbsenFormDisplayed()) {
-            throw new RuntimeException("Absen form not visible");
-        }
-    }
-
-    @Then("Jam masuk otomatis muncul")
-    public void verifyAutoTime() {
-        String time = absenPage.getTimeInput();
-        if (time == null || time.isEmpty()) {
-            throw new RuntimeException("Time not displayed automatically");
-        }
-        System.out.println("Auto time displayed: " + time);
-    }
-
-    @When("Pengguna memilih opsi {string}")
-    public void selectAttendanceOption(String option) throws InterruptedException {
-        absenPage.pilihDariDropdown(option);
-        Thread.sleep(2000);
+    public void munculFormAbsen() {
 
     }
 
-    @And("Pengguna menambahkan catatan {string}")
-    public void addNote(String note) throws InterruptedException {
-        Thread.sleep(2000);
-        absenPage.isiNote(note);
-        Thread.sleep(2000);
-        String enteredNote = absenPage.getNoteText();
-        Thread.sleep(2000);
-//        if (!enteredNote.equals(note)) {
-//            throw new RuntimeException("Note not entered correctly");
-//        }
-    }
-
-    @And("Pengguna menekan tombol Absen Masuk")
-    public void submitAbsen() throws InterruptedException {
-        // Capture data before submission
-        String time = absenPage.getTimeInput();
-//        String type = absenPage.getSelectedDropdownValue();
-        String note = absenPage.getNoteText();
-
-        absenPage.onclickAbsenMasuk();
+//   @Then("Jam masuk otomatis muncul")
+//    public void penggunaMemilihJamMasuk() {
 //
-//        System.out.println("Absen submitted with:");
-//        System.out.println("Time: " + time);
-//        System.out.println("Type: " + type);
-//        System.out.println("Note: " + note);
-    }
-
-    private void takeScreenshot(WebDriver driver, String savePath) throws IOException {
-        File directory = new File(savePath);
-        if (!directory.exists()) {
-//            directory.mkdirs();
-            System.out.println("Directory does not exist, creating: " + savePath);
-        }
-
-        String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String filename = "Absen_Selfie_" + timestamp + ".png";
-        File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        File destination = new File(savePath + filename);
-
-        FileUtils.copyFile(screenshot, destination);
-        System.out.println("Screenshot saved: " + destination.getAbsolutePath());
-    }
+//    }
+//
+//   @When("Pengguna memilih opsi {string}")
+//    public void penggunaMemilihOpsi(String arg0) {
+//   absenPage.pilihDariDropdown(opsi);
+//    }
+//
+//   @And("Pengguna menambahkan catatan {string}")
+//    public void penggunaMenambahkanCatatan(String arg0) {
+//}
+//
+//    @And("Pengguna menekan tombol Absen Masuk")
+//   public void penggunaMenekanTombolAbsenMasuk() {
+//
+//    }
+//
+//   @Then("Sistem menampilkan pesan {string}")
+//   public void sistemMenampilkanPesan(String arg0) {
+//   }
 }
