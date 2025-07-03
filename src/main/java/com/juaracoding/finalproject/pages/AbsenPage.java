@@ -90,9 +90,15 @@ public class AbsenPage {
         noteTextField.sendKeys(note);
     }
 
-    public String getNoteText() {
+    public String getNoteTextNasuk() throws InterruptedException {
+        Thread.sleep(2000);
         wait.until(ExpectedConditions.visibilityOf(noteTextField));
-        return noteTextField.getAttribute("value");
+
+        noteTextField.clear();
+        Thread.sleep(2000);
+        CharSequence note = null;
+        noteTextField.sendKeys(note);
+        return "";
     }
 
     public void onclickAbsenMasuk() {

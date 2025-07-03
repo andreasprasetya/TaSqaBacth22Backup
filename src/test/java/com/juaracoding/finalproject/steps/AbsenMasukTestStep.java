@@ -80,7 +80,7 @@ public class AbsenMasukTestStep {
             absenPage.isiNote(note);
 
             Thread.sleep(2000);
-            String enteredNote = absenPage.getNoteText();
+            String enteredNote = absenPage.getNoteTextNasuk();
 //            if (!enteredNote.equals(note)) {
 //                throw new RuntimeException("Note not entered correctly");
 //            }
@@ -96,7 +96,7 @@ public class AbsenMasukTestStep {
             String time = absenPage.getTimeInput();
             String type = absenPage.getSelectedDropdownValue();
 //        String type = absenPage.getSelectedDropdownValue();
-            String note = absenPage.getNoteText();
+            String note = absenPage.getNoteTextNasuk();
             Thread.sleep(1000);
             absenPage.onclickAbsenMasuk();
             Thread.sleep(1000);

@@ -110,10 +110,10 @@ public class AbsenKeluarTestStep {
         }
     }
 
-//    public void scrollAndClick(WebElement element) {
-//        scrollIntoView(element);
-//        element.click();
-//    }
+    public void scrollAndClick(WebElement element) {
+        scrollIntoView(element);
+        element.click();
+    }
 
 
 
