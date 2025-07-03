@@ -118,4 +118,3 @@ public class AbsenTestStep {
         System.out.println("Screenshot saved: " + destination.getAbsolutePath());
     }
 }
-}
