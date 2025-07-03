@@ -1,6 +1,7 @@
 package com.juaracoding.finalproject.steps;
 
 import com.juaracoding.finalproject.DriverSingleton;
+import com.juaracoding.finalproject.pages.AbsenPage;
 import com.juaracoding.finalproject.pages.SignInPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -69,8 +70,7 @@ public class AbsenTestStep {
     }
 
     @And("Pengguna menambahkan catatan {string}")
-    public void addNote(String note) {
-        public void addNote(String note) throws InterruptedException {
+    public void addNote(String note) throws InterruptedException {
             Thread.sleep(2000);
             absenPage.isiNote(note);
 
@@ -86,7 +86,7 @@ public class AbsenTestStep {
         }
 
         @And("Pengguna menekan tombol Absen Masuk")
-        public void submitAbsen() throws InterruptedException {
+        public void submitAbsen () throws InterruptedException {
             // Capture data before submission
             String time = absenPage.getTimeInput();
             String type = absenPage.getSelectedDropdownValue();
@@ -106,7 +106,7 @@ public class AbsenTestStep {
 //        System.out.println("Note: " + note);
         }
 
-        private void takeScreenshot(WebDriver driver, String savePath) throws IOException {
+        private void takeScreenshot (WebDriver driver, String savePath) throws IOException {
             File directory = new File(savePath);
             if (!directory.exists()) {
 //            directory.mkdirs();
@@ -121,3 +121,4 @@ public class AbsenTestStep {
             FileUtils.copyFile(screenshot, destination);
             System.out.println("Screenshot saved: " + destination.getAbsolutePath());
         }
+    }
