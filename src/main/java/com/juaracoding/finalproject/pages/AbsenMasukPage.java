@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class AbsenPage {
+public class AbsenMasukPage {
     private final WebDriverWait wait;
     WebDriver driver;
 
@@ -36,7 +36,7 @@ public class AbsenPage {
     @FindBy(xpath = "/html/body/div[2]/div[3]/div[2]/form/button")
     WebElement buttonAbsenMasuk;
 
-    public AbsenPage(WebDriver driver) {
+    public AbsenMasukPage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         PageFactory.initElements(driver, this);
@@ -84,7 +84,6 @@ public class AbsenPage {
     public void isiNote(String note) throws InterruptedException {
         Thread.sleep(2000);
         wait.until(ExpectedConditions.visibilityOf(noteTextField));
-
         noteTextField.clear();
         Thread.sleep(2000);
         noteTextField.sendKeys(note);

@@ -73,24 +73,25 @@ public class AbsenKeluarTestStep {
 
     @And("Pengguna menambahkan catatan {string}")
     public void addNote(String note) throws InterruptedException {
-        Thread.sleep(2000);
+        Thread.sleep(500);
         absenKeluarPage.isiNote(note);
-        Thread.sleep(2000);
+        Thread.sleep(500);
         String enteredNote = absenKeluarPage.getNoteTextKeluer();
-        Thread.sleep(2000);
+
 //        if (!enteredNote.equals(note)) {
 //            throw new RuntimeException("Note not entered correctly");
 //        }
     }
 
     @And("Pengguna menekan tombol Absen Keluar")
-    public void penggunaMenekanTombolAbsenKeluar() {
+    public void penggunaMenekanTombolAbsenKeluar() throws InterruptedException {
         // Capture data before submission
         String time = absenKeluarPage.getTimeInputKeluar();
 //        String type = absenPage.getSelectedDropdownValue();
         String note = absenKeluarPage.getNoteTextKeluer();
-
+        Thread.sleep(500);
         absenKeluarPage.onClickAbsenKeluar();
+        Thread.sleep(500);
     }
 
 
