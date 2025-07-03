@@ -65,21 +65,21 @@ public class AbsenTestStep {
     @When("Pengguna memilih opsi {string}")
     public void selectAttendanceOption(String option) throws InterruptedException {
         absenPage.pilihDariDropdown(option);
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
     }
 
     @And("Pengguna menambahkan catatan {string}")
     public void addNote(String note) throws InterruptedException {
-            Thread.sleep(2000);
+            Thread.sleep(1000);
             absenPage.isiNote(note);
 
-            Thread.sleep(2000);
+            Thread.sleep(1000);
             String enteredNote = absenPage.getNoteText();
             if (!enteredNote.equals(note)) {
                 throw new RuntimeException("Note not entered correctly");
             }
-            Thread.sleep(2000);
+            Thread.sleep(1000);
 //        if (!enteredNote.equals(note)) {
 //            throw new RuntimeException("Note not entered correctly");
 //        }
