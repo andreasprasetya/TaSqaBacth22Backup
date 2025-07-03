@@ -1,7 +1,6 @@
 package com.juaracoding.finalproject.steps;
 
 import com.juaracoding.finalproject.DriverSingleton;
-import com.juaracoding.finalproject.pages.AbsenMasukPage;
 import com.juaracoding.finalproject.pages.SignInPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -16,9 +15,9 @@ import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
 
-public class AbsenMasukTestStep {
+public class AbsenTestStep {
     private WebDriver driver;
-    private AbsenMasukPage absenPage;
+    private AbsenPage absenPage;
 
     @Given("Pengguna berada di halaman Home")
     public void initializePage() {
@@ -26,7 +25,7 @@ public class AbsenMasukTestStep {
         driver.get("https://magang.dikahadir.com/apps/absent");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         SignInPage signInPage = new SignInPage(driver);
-        absenPage = new AbsenMasukPage(driver);
+        absenPage = new AbsenPage(driver);
 
         // Perform login and verify
         signInPage.login("hadirsqa1@gmail.com", "SQA@Hadir12345");
@@ -41,9 +40,7 @@ public class AbsenMasukTestStep {
 
     @And("Pengguna mengambil foto selfie dengan wajah terlihat")
     public void takeSelfie() throws IOException, InterruptedException {
-        Thread.sleep(500);
         absenPage.onClickCamera();
-        Thread.sleep(500);
         String screenshotPath = "C:\\Users\\Andreas Prasetya\\OneDrive\\Pictures\\Screenshots\\";
         takeScreenshot(driver, screenshotPath);
     }
@@ -66,57 +63,61 @@ public class AbsenMasukTestStep {
 
     @When("Pengguna memilih opsi {string}")
     public void selectAttendanceOption(String option) throws InterruptedException {
-        Thread.sleep(500);
         absenPage.pilihDariDropdown(option);
-        Thread.sleep(500);
+        Thread.sleep(2000);
 
     }
 
     @And("Pengguna menambahkan catatan {string}")
-    public void addNote(String note) throws IOException, InterruptedException {
-        Thread.sleep(500);
-        absenPage.isiNote(note);
+    public void addNote(String note) {
+        public void addNote(String note) throws InterruptedException {
+            Thread.sleep(2000);
+            absenPage.isiNote(note);
 
-        Thread.sleep(500);
-//        String enteredNote = absenPage.getNoteTextNasuk();
+            Thread.sleep(2000);
+            String enteredNote = absenPage.getNoteText();
+            if (!enteredNote.equals(note)) {
+                throw new RuntimeException("Note not entered correctly");
+            }
+            Thread.sleep(2000);
 //        if (!enteredNote.equals(note)) {
 //            throw new RuntimeException("Note not entered correctly");
 //        }
-//        Thread.sleep(2000);
-//        if (!enteredNote.equals(note)) {
-//            throw new RuntimeException("Note not entered correctly");
-//        }
-    }
+        }
 
-    @And("Pengguna menekan tombol Absen Masuk")
-    public void submitAbsen () throws InterruptedException {
-        // Capture data before submission
-        String time = absenPage.getTimeInput();
-        String type = absenPage.getSelectedDropdownValue();
+        @And("Pengguna menekan tombol Absen Masuk")
+        public void submitAbsen() throws InterruptedException {
+            // Capture data before submission
+            String time = absenPage.getTimeInput();
+            String type = absenPage.getSelectedDropdownValue();
 //        String type = absenPage.getSelectedDropdownValue();
-        String note = absenPage.getNoteTextNasuk();
-        Thread.sleep(500);
-        absenPage.onclickAbsenMasuk();
-         Thread.sleep(500);
+            String note = absenPage.getNoteText();
+
+            absenPage.onclickAbsenMasuk();
+
+            System.out.println("Absen submitted with:");
+            System.out.println("Time: " + time);
+            System.out.println("Type: " + type);
+            System.out.println("Note: " + note);
+//
 //        System.out.println("Absen submitted with:");
 //        System.out.println("Time: " + time);
 //        System.out.println("Type: " + type);
 //        System.out.println("Note: " + note);
-    }
-
-    private void takeScreenshot (WebDriver driver, String savePath) throws IOException {
-        File directory = new File(savePath);
-        if (!directory.exists()) {
-//            directory.mkdirs();
-            System.out.println("Directory does not exist, creating: " + savePath);
         }
 
-        String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String filename = "Absen_Selfie_" + timestamp + ".png";
-        File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        File destination = new File(savePath + filename);
+        private void takeScreenshot(WebDriver driver, String savePath) throws IOException {
+            File directory = new File(savePath);
+            if (!directory.exists()) {
+//            directory.mkdirs();
+                System.out.println("Directory does not exist, creating: " + savePath);
+            }
 
-        FileUtils.copyFile(screenshot, destination);
-        System.out.println("Screenshot saved: " + destination.getAbsolutePath());
-    }
-}
+            String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+            String filename = "Absen_Selfie_" + timestamp + ".png";
+            File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            File destination = new File(savePath + filename);
+
+            FileUtils.copyFile(screenshot, destination);
+            System.out.println("Screenshot saved: " + destination.getAbsolutePath());
+        }

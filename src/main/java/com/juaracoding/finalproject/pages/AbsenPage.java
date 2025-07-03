@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class AbsenMasukPage {
+public class AbsenPage {
     private final WebDriverWait wait;
     WebDriver driver;
 
@@ -36,7 +36,7 @@ public class AbsenMasukPage {
     @FindBy(xpath = "/html/body/div[2]/div[3]/div[2]/form/button")
     WebElement buttonAbsenMasuk;
 
-    public AbsenMasukPage(WebDriver driver) {
+    public AbsenPage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         PageFactory.initElements(driver, this);
