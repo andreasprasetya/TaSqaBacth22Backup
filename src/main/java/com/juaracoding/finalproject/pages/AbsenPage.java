@@ -37,49 +37,17 @@ public class AbsenPage {
     WebElement buttonAbsenMasuk;
 
     public AbsenPage(WebDriver driver) {
-        this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
     }
 
-    public void onClickAbsen() {
-        wait.until(ExpectedConditions.elementToBeClickable(buttonAbsen));
-        buttonAbsen.click();
-    }
-
-    public void onClickCamera() throws InterruptedException {
-        wait.until(ExpectedConditions.elementToBeClickable(buttonCamera));
-        buttonCamera.click();
-//       Thread.sleep(1000); // Tambahkan delay untuk memastikan kamera siap
-        try {
-            Thread.sleep(2000); // Tunggu 2 detik untuk kamera siap
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
-    }
-
-    public String getTimeInput() {
-        wait.until(ExpectedConditions.visibilityOf(timeInput));
-        return timeInput.getText(); // Diubah dari getAttribute("value") ke getText()
-    }
-
-    public void pilihDariDropdown(String value) throws InterruptedException {
-        Thread.sleep(2000);
-        wait.until(ExpectedConditions.visibilityOf(selectOptions));
-        selectOptions.click();
-
-
-    }
-
     public String getSelectedDropdownValue() throws InterruptedException {
-//        Thread.sleep(2000);
         Thread.sleep(2000);
         wait.until(ExpectedConditions.visibilityOf(selectOptionsWFH));
         String text = selectOptionsWFH.getText();
         selectOptionsWFH.click();
-        return text;// Mengembalikan teks yang dipilih
+        return text; // Mengembalikan teks yang dipilih
     }
-
 
     public void isiNote(String note) throws InterruptedException {
         Thread.sleep(2000);
@@ -89,15 +57,9 @@ public class AbsenPage {
         noteTextField.sendKeys(note);
     }
 
-    public String getNoteTextNasuk() throws InterruptedException {
-        Thread.sleep(2000);
+    public String getNoteText() {
         wait.until(ExpectedConditions.visibilityOf(noteTextField));
-
-        noteTextField.clear();
-        Thread.sleep(2000);
-        CharSequence note = null;
-        noteTextField.sendKeys(note);
-        return "";
+        return noteTextField.getAttribute("value");
     }
 
     public void onclickAbsenMasuk() {
@@ -108,10 +70,9 @@ public class AbsenPage {
     public boolean isAbsenFormDisplayed() {
         try {
             wait.until(ExpectedConditions.visibilityOf(absenForm));
-            return !absenForm.isDisplayed();
+            return absenForm.isDisplayed();
         } catch (Exception e) {
-            return true;
+            return false;
         }
     }
 }
-

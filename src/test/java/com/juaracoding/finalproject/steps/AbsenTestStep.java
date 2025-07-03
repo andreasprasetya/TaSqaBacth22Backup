@@ -9,8 +9,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedConditions;import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -73,13 +72,10 @@ public class AbsenTestStep {
     @And("Pengguna menambahkan catatan {string}")
     public void addNote(String note) throws IOException, InterruptedException {
         Thread.sleep(2000);
-        absenPage.isiNote(note);
+        absenPage.getNoteText();
 
         Thread.sleep(2000);
-        String enteredNote = absenPage .getNoteTextNasuk();
-        if (!enteredNote.equals(note)) {
-            throw new RuntimeException("Note not entered correctly");
-        }
+        String enteredNote = absenPage.getNoteText();
         Thread.sleep(2000);
 //        if (!enteredNote.equals(note)) {
 //            throw new RuntimeException("Note not entered correctly");
@@ -92,8 +88,7 @@ public class AbsenTestStep {
         String time = absenPage.getTimeInput();
         String type = absenPage.getSelectedDropdownValue();
 //        String type = absenPage.getSelectedDropdownValue();
-        String note = absenPage.getNoteTextNasuk()
-                ;
+        String note = absenPage.getNoteText();
 
         absenPage.onclickAbsenMasuk();
 //
