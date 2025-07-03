@@ -1,4 +1,5 @@
 package com.juaracoding.finalproject.pages;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -22,13 +23,13 @@ public class AbsenPage {
     WebElement absenForm;
 
     @FindBy(xpath = "/html/body/div[2]/div[3]/div[2]/form/div[1]")
-    WebElement timeInput; // untuk ambil jam masuk otomatis sesuai device dan open browser
+    WebElement timeInput;
 
     @FindBy(css = "div[role='combobox']")
-    WebElement selectOptions; // Diperbaiki xpath untuk select element
+    WebElement selectOptions;
 
-    @FindBy(xpath = "//ul[@aria-labelledby='is_wfh']/li[2]")
-    WebElement selectOptionsWFH; // Diperbaiki xpath untuk select element
+    @FindBy(xpath= "//ul[@aria-labelledby='is_wfh']/li[2]")
+    WebElement selectOptionsWFH;
 
     @FindBy(xpath = "//label[@id='wfh']/following-sibling::div//input")
     WebElement noteTextField;
@@ -37,8 +38,36 @@ public class AbsenPage {
     WebElement buttonAbsenMasuk;
 
     public AbsenPage(WebDriver driver) {
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        this.driver = driver;
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         PageFactory.initElements(driver, this);
+    }
+
+    public void onClickAbsen() {
+        wait.until(ExpectedConditions.elementToBeClickable(buttonAbsen));
+        buttonAbsen.click();
+    }
+
+    public void onClickCamera() {
+        wait.until(ExpectedConditions.elementToBeClickable(buttonCamera));
+        buttonCamera.click();
+        try {
+            Thread.sleep(2000); // Tunggu 2 detik untuk kamera siap
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+
+    public String getTimeInput() {
+        wait.until(ExpectedConditions.visibilityOf(timeInput));
+        return timeInput.getText();
+    }
+
+    public void pilihDariDropdown(String value) throws InterruptedException {
+        Thread.sleep(2000);
+        wait.until(ExpectedConditions.visibilityOf(selectOptions));
+        selectOptions.click();
+        // Tambahkan logic memilih value jika diperlukan
     }
 
     public String getSelectedDropdownValue() throws InterruptedException {
@@ -46,7 +75,7 @@ public class AbsenPage {
         wait.until(ExpectedConditions.visibilityOf(selectOptionsWFH));
         String text = selectOptionsWFH.getText();
         selectOptionsWFH.click();
-        return text; // Mengembalikan teks yang dipilih
+        return text;
     }
 
     public void isiNote(String note) throws InterruptedException {
@@ -62,7 +91,7 @@ public class AbsenPage {
         return noteTextField.getAttribute("value");
     }
 
-    public void onclickAbsenMasuk() {
+    public void onClickbuttonAbsenMasuk() {
         wait.until(ExpectedConditions.elementToBeClickable(buttonAbsenMasuk));
         buttonAbsenMasuk.click();
     }

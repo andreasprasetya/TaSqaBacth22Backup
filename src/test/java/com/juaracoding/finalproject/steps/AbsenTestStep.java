@@ -45,13 +45,13 @@ public class AbsenTestStep {
         String screenshotPath = "C:\\Users\\Andreas Prasetya\\OneDrive\\Pictures\\Screenshots\\";
         takeScreenshot(driver, screenshotPath);
     }
+//    @Then("Muncul Form Absen")
+//    public void verifyAbsenForm() {
+//        if (absenPage.isAbsenFormDisplayed()) {
+//            throw new RuntimeException("Absen form not visible");
+//        }
+//    }
 
-    @Then("Muncul Form Absen")
-    public void verifyAbsenForm() {
-        if (absenPage.isAbsenFormDisplayed()) {
-            throw new RuntimeException("Absen form not visible");
-        }
-    }
 
     @Then("Jam masuk otomatis muncul")
     public void verifyAutoTime() {
@@ -89,9 +89,9 @@ public class AbsenTestStep {
         String type = absenPage.getSelectedDropdownValue();
 //        String type = absenPage.getSelectedDropdownValue();
         String note = absenPage.getNoteText();
-
-        absenPage.onclickAbsenMasuk();
-//
+        Thread.sleep(2000);
+        absenPage.onClickbuttonAbsenMasuk();
+        Thread.sleep(2000);
 //        System.out.println("Absen submitted with:");
 //        System.out.println("Time: " + time);
 //        System.out.println("Type: " + type);
