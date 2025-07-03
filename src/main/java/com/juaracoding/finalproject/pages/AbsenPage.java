@@ -1,5 +1,4 @@
 package com.juaracoding.finalproject.pages;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -53,7 +52,7 @@ public class AbsenPage {
         buttonCamera.click();
 //       Thread.sleep(1000); // Tambahkan delay untuk memastikan kamera siap
         try {
-            Thread.sleep(1000); // Tunggu 2 detik untuk kamera siap
+            Thread.sleep(2000); // Tunggu 2 detik untuk kamera siap
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
@@ -65,7 +64,7 @@ public class AbsenPage {
     }
 
     public void pilihDariDropdown(String value) throws InterruptedException {
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         wait.until(ExpectedConditions.visibilityOf(selectOptions));
         selectOptions.click();
 
@@ -74,7 +73,7 @@ public class AbsenPage {
 
     public String getSelectedDropdownValue() throws InterruptedException {
 //        Thread.sleep(2000);
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         wait.until(ExpectedConditions.visibilityOf(selectOptionsWFH));
         String text = selectOptionsWFH.getText();
         selectOptionsWFH.click();
@@ -83,17 +82,22 @@ public class AbsenPage {
 
 
     public void isiNote(String note) throws InterruptedException {
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         wait.until(ExpectedConditions.visibilityOf(noteTextField));
-
         noteTextField.clear();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         noteTextField.sendKeys(note);
     }
 
-    public String getNoteText() {
+    public String getNoteTextNasuk() throws InterruptedException {
+        Thread.sleep(2000);
         wait.until(ExpectedConditions.visibilityOf(noteTextField));
-        return noteTextField.getAttribute("value");
+
+        noteTextField.clear();
+        Thread.sleep(2000);
+        CharSequence note = null;
+        noteTextField.sendKeys(note);
+        return "";
     }
 
     public void onclickAbsenMasuk() {
@@ -110,3 +114,4 @@ public class AbsenPage {
         }
     }
 }
+
